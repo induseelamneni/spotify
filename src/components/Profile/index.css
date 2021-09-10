@@ -1,0 +1,78 @@
+.home-container {
+  background-color: transparent;
+  width: 1440px;
+  height: 1024px;
+  padding-top: 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.profile-img {
+  height: 200px;
+  width: 200px;
+}
+.profile-container {
+  height: 200px;
+  width: 200px;
+  border: 5px solid #ffffff;
+  border-radius: 100px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 345px;
+  margin-left: 645px;
+}
+.user-heading {
+  font-family: Assistant;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 48px;
+
+  margin-left: 645px;
+
+  color: #ffffff;
+}
+.number {
+  font-family: Lato;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 14px;
+
+  color: #1db954;
+}
+.followers {
+  font-family: Assistant;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 14px;
+
+  text-align: center;
+
+  color: #9b9b9b;
+}
+.followers-container {
+  display: flex;
+  flex-direction: row;
+  margin-left: 645px;
+}
+.followers-inner-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-left: 20px;
+}
+.logout-btn {
+  background-color: transparent;
+  border: 2px solid #ffffff;
+  border-radius: 20px;
+  color: #ffffff;
+  width: 150px;
+  height: 40px;
+}
+.button-container {
+  margin-left: 685px;
+  margin-top: 10px;
+}

@@ -1,0 +1,61 @@
+.playlist-heading {
+  font-family: Assistant;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 35px;
+  margin-left: 10px;
+  margin-top: 100px;
+  color: #ffffff;
+}
+.movie-pic-container {
+  display: flex;
+  flex-direction: row;
+}
+
+.pic {
+  height: 100px;
+  width: 100px;
+}
+.my-fav-heading {
+  font-family: Assistant;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 20px;
+
+  text-align: center;
+
+  color: #ffffff;
+}
+.music-symbol {
+  height: 50px;
+  width: 50px;
+}
+.music-symbol-container {
+  background-color: #282828;
+  height: 200px;
+  width: 200px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.music-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.playlist-2-container {
+  margin-left: 50px;
+}
+.pic1 {
+  height: 200px;
+  width: 200px;
+}
+.track-para {
+  font-family: Assistant;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 18px;
+  text-align: center;
+  color: #64748b;
+}

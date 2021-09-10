@@ -1,0 +1,51 @@
+.left-nav-bar {
+  background-color: #040306;
+  width: 120px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-shrink: 0;
+  margin-left: 0px;
+  padding-left: 0px;
+}
+.ul-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-top: 200px;
+}
+.nav-icons-list-container {
+  list-style-type: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-right: 20px;
+  margin-top: 50px;
+  margin-left: 0px;
+  width: 100%;
+
+  padding-left: 0px;
+}
+.icon-name {
+  color: #9b9b9b;
+  font-family: 'Assistant';
+  font-size: 20px;
+  font-weight: 500;
+}
+.spotify-icon-style {
+  height: 150px;
+  width: 150px;
+  padding-left: 30px;
+}
+.icon {
+  height: 80px;
+  width: 80px;
+  margin-top: 10px;
+}
+.active-item {
+  background-color: #181818;
+  border-left: 3px solid #1ed760;
+  width: 100%;
+}

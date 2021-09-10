@@ -1,0 +1,10 @@
+.home-container {
+  padding-left: 10px;
+  background-color: transparent;
+  width: 70%;
+  height: 300vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
