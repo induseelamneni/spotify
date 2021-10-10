@@ -1,4 +1,4 @@
-.home-container {
+.profile-pic-container {
   background-color: transparent;
   width: 1440px;
   height: 1024px;
@@ -7,33 +7,49 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  flex-shrink: 1;
 }
+
 .profile-img {
   height: 200px;
   width: 200px;
 }
-.profile-container {
-  height: 200px;
-  width: 200px;
-  border: 5px solid #ffffff;
-  border-radius: 100px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  margin-top: 345px;
-  margin-left: 645px;
-}
-.user-heading {
-  font-family: Assistant;
-  font-style: normal;
-  font-weight: bold;
-  font-size: 48px;
 
-  margin-left: 645px;
+@media screen and (min-width: 768px) {
+  .profile-container {
+    height: 200px;
+    width: 200px;
+    border: 5px solid #ffffff;
+    border-radius: 100px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 345px;
+    margin-left: 645px;
+    flex-shrink: 1;
+  }
+  .user-heading {
+    font-family: Assistant;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 48px;
 
-  color: #ffffff;
+    margin-left: 645px;
+
+    color: #ffffff;
+  }
+  .followers-container {
+    display: flex;
+    flex-direction: row;
+    margin-left: 645px;
+  }
+  .button-container {
+    margin-left: 685px;
+    margin-top: 10px;
+  }
 }
+
 .number {
   font-family: Lato;
   font-style: normal;
@@ -52,11 +68,7 @@
 
   color: #9b9b9b;
 }
-.followers-container {
-  display: flex;
-  flex-direction: row;
-  margin-left: 645px;
-}
+
 .followers-inner-container {
   display: flex;
   flex-direction: column;
@@ -72,7 +84,49 @@
   width: 150px;
   height: 40px;
 }
-.button-container {
-  margin-left: 685px;
-  margin-top: 10px;
+
+@media screen and (max-width: 768px) {
+  .profile-container {
+    height: 200px;
+    width: 200px;
+    border: 5px solid #ffffff;
+    border-radius: 100px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 250px;
+    margin-left: 210px;
+    flex-shrink: 1;
+  }
+  .button-container {
+    margin-left: 220px;
+    margin-top: 10px;
+  }
+  .followers-container {
+    display: flex;
+    flex-direction: row;
+    margin-left: 180px;
+  }
+  .user-heading {
+    font-family: Assistant;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 38px;
+    width: 100%;
+    margin-left: 210px;
+
+    color: #ffffff;
+  }
+  .profile-pic-container {
+    background-color: transparent;
+    width: 1100px;
+    height: 600px;
+    padding-top: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex-shrink: 1;
+  }
 }

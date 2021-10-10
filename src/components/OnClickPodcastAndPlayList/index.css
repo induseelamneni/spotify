@@ -1,0 +1,56 @@
+.pic-container-play-list {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+  justify-content: center;
+}
+.my-fav-heading-sm {
+  font-size: 40px;
+  font-family: Assistant;
+  font-style: normal;
+  font-weight: bold;
+
+  color: #ffffff;
+}
+.my-fav-heading-on {
+  font-size: 18px;
+  font-family: Assistant;
+  font-style: normal;
+  font-weight: 400;
+
+  color: #ffffff;
+}
+
+.play-list-pic-description {
+  margin-left: 10px;
+}
+
+@media screen and (min-width: 768px) {
+  .singer-lg {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .pic-container-play-list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    align-self: center;
+  }
+  .my-fav-heading-on {
+    display: none;
+  }
+  .track-para {
+    display: none;
+  }
+  .singer-lg {
+    font-family: Assistant;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 18px;
+    text-align: center;
+    color: #64748b;
+  }
+}

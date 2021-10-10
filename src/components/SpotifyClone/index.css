@@ -80,11 +80,20 @@
   outline: none;
   border-radius: 12px;
 }
-.spotify-app-bg {
-  background-color: #181818;
-  display: flex;
-  flex-direction: row;
-  height: 300vh;
+@media screen and (max-width: 768px) {
+  .spotify-app-bg {
+    background-color: #181818;
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .spotify-app-bg {
+    background-color: #181818;
+    display: flex;
+    flex-direction: row;
+  }
 }
 
 .main-container {
@@ -96,9 +105,38 @@
   display: flex;
   flex-direction: column;
 }
-.portfolio-body {
-  background-color: transparent;
-  width: 90%;
-  height: 100vh;
-  margin-left: 40px;
+
+@media screen and (min-width: 768px) {
+  .portfolio-body {
+    background-color: transparent;
+    width: 90%;
+
+    margin-left: 10px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .portfolio-body {
+    background-color: transparent;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: flex-start;
+    margin-left: 40px;
+    flex-shrink: 1;
+  }
+
+  .active-section {
+    width: 50%;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: flex-start;
+  }
+}
+@media screen and (max-width: 768px) {
+  .large-device-nav-bar {
+    display: none;
+  }
 }

@@ -2,93 +2,6 @@ import {Component} from 'react'
 import './index.css'
 import {BiArrowBack} from 'react-icons/bi'
 
-const editorsPicsList = [
-  {
-    id: 0,
-    imgUrl:
-      'https://res.cloudinary.com/dmd5feuh9/image/upload/v1628511056/Rectangle_480_ttg4mr.png',
-    name: 'Telugu Romance',
-    songTitle: 'All Out 90’s Telugu',
-  },
-  {
-    id: 1,
-    imgUrl:
-      'https://res.cloudinary.com/dmd5feuh9/image/upload/v1628519108/Rectangle_481_tm9ggk.png',
-    name: 'Bollywood R&B',
-    songTitle: 'Bollywood R&B',
-  },
-  {
-    id: 2,
-    imgUrl:
-      'https://res.cloudinary.com/dmd5feuh9/image/upload/v1628519111/Rectangle_482_glterz.png',
-    name: 'Marati Hits',
-    songTitle: 'Romantic Marati Hits',
-  },
-  {
-    id: 3,
-    imgUrl:
-      'https://res.cloudinary.com/dmd5feuh9/image/upload/v1628519155/Rectangle_483_ah5vjp.png',
-    name: 'Sufi & Bollywood',
-    songTitle: 'Sufi & Bollywood',
-  },
-  {
-    id: 4,
-    imgUrl:
-      'https://res.cloudinary.com/dmd5feuh9/image/upload/v1628519170/Rectangle_484_ykslai.png',
-    name: 'Romantic Tamizha',
-    songTitle: 'Romantic Tamizha',
-  },
-  {
-    id: 5,
-    imgUrl:
-      'https://res.cloudinary.com/dmd5feuh9/image/upload/v1628519182/Rectangle_538_mwr7o1.png',
-    name: 'Ardha Sathabdham',
-    songTitle: 'Telugu Romance',
-  },
-  {
-    id: 6,
-    imgUrl:
-      'https://res.cloudinary.com/dmd5feuh9/image/upload/v1628528726/Rectangle_485_l2eabk.png',
-    name: 'Bahubali',
-    songTitle: 'Happy Oye!',
-  },
-  {
-    id: 7,
-    imgUrl:
-      'https://res.cloudinary.com/dmd5feuh9/image/upload/v1628528738/Rectangle_486_luks88.png',
-    name: 'Dhruva',
-    songTitle: 'Soulful',
-  },
-  {
-    id: 8,
-    imgUrl:
-      'https://res.cloudinary.com/dmd5feuh9/image/upload/v1628528788/Rectangle_487_ibugil.png',
-    name: 'Arjun Reddy',
-    songTitle: 'Throwback 90s',
-  },
-  {
-    id: 9,
-    imgUrl:
-      'https://res.cloudinary.com/dmd5feuh9/image/upload/v1628528799/Rectangle_488_wymne8.png',
-    name: 'Awe',
-    songTitle: 'Hindustani',
-  },
-  {
-    id: 10,
-    imgUrl:
-      'https://res.cloudinary.com/dmd5feuh9/image/upload/v1628528837/Rectangle_489_ocr58u.png',
-    name: 'Oopiri',
-    songTitle: 'Bollywood Araby',
-  },
-  {
-    id: 11,
-    imgUrl:
-      'https://res.cloudinary.com/dmd5feuh9/image/upload/v1628528850/Rectangle_541_le1txd.png',
-    name: 'Nuve kavalli',
-    songTitle: 'Soft 50s',
-  },
-]
-
 const songsList = [
   {
     no: 1,
@@ -156,20 +69,15 @@ const songsList = [
   },
 ]
 
-class OnClickEditors extends Component {
+class OnClickPodcastAndPlayList extends Component {
   onClickHome = () => {
     const {history} = this.props
+    console.log(history)
 
     return history.replace('/')
   }
 
   render() {
-    const {match} = this.props
-    console.log(match)
-    const {params} = match
-    const {id} = params
-    const cardId = Number(id)
-
     return (
       <div className="onClickEditorsBg">
         <button type="button" className="back-btn" onClick={this.onClickHome}>
@@ -177,18 +85,41 @@ class OnClickEditors extends Component {
           <p>Back</p>
         </button>
 
-        <div className="pic-container-editors">
-          <img
-            src={editorsPicsList[cardId].imgUrl}
-            alt={editorsPicsList[cardId].name}
-            className="editors-pic-img"
-          />
-          <div className="editor-pic-name-container">
-            <p className="editors-picks-paragraph-hide-sm">Editors picks</p>
-            <h1 className="song-name">{editorsPicsList[cardId].songTitle}</h1>
-            <p className="editors-picks-paragraph">Mickey J. Meyer</p>
+        <div className="pic-container-play-list">
+          <div>
+            <div className="movie-pic-container1">
+              <img
+                src="https://res.cloudinary.com/dmd5feuh9/image/upload/v1631171176/Rectangle_462_xmavsf.png"
+                alt="movie1"
+                className="pic"
+              />
+              <img
+                src="https://res.cloudinary.com/dmd5feuh9/image/upload/v1631171160/Rectangle_463_c4meao.png"
+                alt="movie2"
+                className="pic"
+              />
+            </div>
+            <div className="movie-pic-container1">
+              <img
+                src="https://res.cloudinary.com/dmd5feuh9/image/upload/v1631171324/Rectangle_464_bpvsw9.png"
+                alt="movie3"
+                className="pic"
+              />
+              <img
+                src="https://res.cloudinary.com/dmd5feuh9/image/upload/v1631171337/Rectangle_465_ob0syz.png"
+                alt="movie4"
+                className="pic"
+              />
+            </div>
+          </div>
+          <div className="play-list-pic-description">
+            <p className="my-fav-heading-on">#playlist</p>
+            <p className="my-fav-heading-sm">My fav </p>
+            <p className="track-para">30 Tracks</p>
+            <p className="singer-lg">Mickey J. Meyer</p>
           </div>
         </div>
+
         <div className="track-heading-container">
           <p className="editors-picks-paragraph12">Track </p>
           <p className="editors-picks-paragraph1">Track </p>
@@ -231,14 +162,12 @@ class OnClickEditors extends Component {
           <div className="bottom-img-song-container">
             <div className="audio-container1">
               <img
-                src={editorsPicsList[cardId].imgUrl}
-                alt={editorsPicsList[cardId].name}
+                src="https://res.cloudinary.com/dmd5feuh9/image/upload/v1633865877/Rectangle_470_qd7f82.png"
+                alt="leader"
                 className="play-img"
               />
               <div className="e-d-p-c">
-                <h1 className="editors-picks-paragraph-h">
-                  {editorsPicsList[cardId].songTitle}
-                </h1>
+                <h1 className="editors-picks-paragraph-h">Avunanna</h1>
                 <p className="artist">Naresh Iyer, Swetha</p>
               </div>
             </div>
@@ -253,5 +182,4 @@ class OnClickEditors extends Component {
     )
   }
 }
-
-export default OnClickEditors
+export default OnClickPodcastAndPlayList

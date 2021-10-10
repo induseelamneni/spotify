@@ -11,25 +11,27 @@ import './index.css'
 const navBarItems = [
   {
     id: 0,
-    iconUrl: 'https://assets.ccbp.in/frontend/react-js/person-img.png',
+    iconUrl:
+      'https://res.cloudinary.com/dmd5feuh9/image/upload/v1633587497/person-spotify-modi_czhkgd.png',
     name: 'PROFILE',
   },
   {
     id: 1,
-    iconUrl: 'https://assets.ccbp.in/frontend/react-js/home-img.png',
+    iconUrl:
+      'https://res.cloudinary.com/dmd5feuh9/image/upload/v1633587873/home_piu6qy.png',
     name: 'HOME',
   },
 
   {
     id: 2,
     iconUrl:
-      'https://res.cloudinary.com/dmd5feuh9/image/upload/v1628664912/music-symbol_jk9jrg.jpg',
+      'https://res.cloudinary.com/dmd5feuh9/image/upload/v1633587966/music-note-beamed_ri1aky.png',
     name: 'YOUR MUSIC',
   },
   {
     id: 3,
     iconUrl:
-      'https://res.cloudinary.com/dmd5feuh9/image/upload/v1628664923/playlist_icon_v3gsjm.png',
+      'https://res.cloudinary.com/dmd5feuh9/image/upload/v1633588155/music-note-list_yqfyz2.png',
     name: 'PLAYLIST',
   },
 ]
@@ -68,6 +70,7 @@ class SpotifyClone extends Component {
           activeNavBarItem={activeNavBarItem}
           changeActiveNavBarItem={this.changeActiveNavBarItem}
           navBarItems={navBarItems}
+          className="large-device-nav-bar"
         />
         <div className="portfolio-body">
           <div className="active-section">{this.renderComponent()}</div>

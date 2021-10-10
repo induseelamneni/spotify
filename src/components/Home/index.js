@@ -1,8 +1,6 @@
 import './index.css'
-
+import {Link} from 'react-router-dom'
 import {Component} from 'react'
-
-import Profile from '../Profile'
 
 const editorsPicsList = [
   {
@@ -336,22 +334,25 @@ const NewReleases = [
     name: 'Ninnila Ninnila',
   },
 ]
+const id = 'Editors'
+const id1 = 'genre'
+const id2 = 'newReleases'
 
 class Home extends Component {
-  onDisplayAllNinetySongs = () => <Profile />
-
   render() {
     return (
       <div className="home-container">
         <h1 className="editors-heading">Editors picks</h1>
         <ul className="editors-pics-ul-container">
           {editorsPicsList.map(item => (
-            <li
-              className="list-item"
-              key={item.id}
-              onClick={this.onDisplayAllNinetySongs}
-            >
-              <img src={item.imgUrl} alt={item.name} className="image-style" />
+            <li className="list-item" key={item.id} id={item.id}>
+              <Link to={`${item.id}/${id}`}>
+                <img
+                  src={item.imgUrl}
+                  alt={item.name}
+                  className="image-style"
+                />
+              </Link>
               <p className="pic-name">{item.name}</p>
             </li>
           ))}
@@ -360,14 +361,19 @@ class Home extends Component {
         <ul className="editors-pics-ul-container">
           {GenresAndMoods.map(item => (
             <li className="list-item1" key={item.id}>
-              <div className={item.styling}>
-                <p className="type">{item.type}</p>
-                <img
-                  src={item.imgUrl}
-                  alt={item.name}
-                  className="image-style1"
-                />
-              </div>
+              <Link
+                to={`/${id1}/${item.id}`}
+                style={{padding: 10, textDecoration: 'none'}}
+              >
+                <div className={item.styling}>
+                  <p className="type">{item.type}</p>
+                  <img
+                    src={item.imgUrl}
+                    alt={item.name}
+                    className="image-style1"
+                  />
+                </div>
+              </Link>
             </li>
           ))}
         </ul>
@@ -375,7 +381,13 @@ class Home extends Component {
         <ul className="editors-pics-ul-container">
           {NewReleases.map(item => (
             <li className="list-item" key={item.id}>
-              <img src={item.imgUrl} alt={item.name} className="image-style" />
+              <Link to={`/${id2}/${item.id}/`}>
+                <img
+                  src={item.imgUrl}
+                  alt={item.name}
+                  className="image-style"
+                />
+              </Link>
               <p className="pic-name">{item.name}</p>
             </li>
           ))}

@@ -1,10 +1,306 @@
-.home-container {
-  padding-left: 10px;
-  background-color: transparent;
-  width: 70%;
-  height: 300vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: flex-start;
+@media screen and (min-width: 768px) {
+  .onClickEditorsBg {
+    padding-left: 40px;
+    background-color: #181818;
+    width: 100%;
+    height: 300vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+  }
+  .back-btn {
+    background-color: transparent;
+    border-width: 0px;
+    color: #ffffff;
+    font-family: 'Roboto';
+    font-size: 15px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding-left: 20px;
+  }
+
+  .editors-pic-img {
+    width: 220px;
+    height: 220px;
+  }
+  .editors-picks-paragraph {
+    font-family: Assistant;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 16px;
+    color: #ffffff;
+  }
+  .song-name {
+    font-family: Assistant;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 80px;
+
+    color: #ffffff;
+  }
+  .pic-container-editors {
+    display: flex;
+    flex-direction: row;
+  }
+  .editor-pic-name-container {
+    margin-left: 20px;
+  }
+  .track-heading-container {
+    width: 100%;
+    display: flex;
+    flex: row;
+    align-items: center;
+    justify-content: space-around;
+  }
+  .line {
+    width: 100%;
+    color: #475569;
+  }
+  .editors-picks-paragraph12 {
+    font-family: Assistant;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    color: transparent;
+    width: 25%;
+  }
+  .editors-picks-paragraph11 {
+    font-family: Assistant;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    color: #ffffff;
+    width: 20%;
+  }
+  .editors-picks-paragraph1 {
+    font-family: Assistant;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    color: #ffffff;
+    width: 25%;
+  }
+  .songs-list {
+    list-style-type: none;
+    width: 100%;
+  }
+
+  .track-heading-container1 {
+    width: 100%;
+    display: flex;
+    flex: row;
+    align-items: flex-start;
+    justify-content: space-around;
+    margin-bottom: 20px;
+  }
+  .bottom-play-container {
+    width: 100%;
+    border: 2px solid #475569;
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+    height: 100px;
+  }
+  .play-img {
+    height: 70px;
+    width: 70px;
+  }
+  .artist {
+    font-family: Assistant;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 13px;
+    color: #475569;
+  }
+  .bottom-img-song-container {
+    display: flex;
+    flex-direction: row;
+    margin-top: 10px;
+    justify-content: space-between;
+    width: 100%;
+  }
+  .editors-picks-paragraph-h {
+    font-family: Assistant;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    color: #ffffff;
+  }
+  .e-d-p-c {
+    margin-left: 10px;
+  }
+
+  audio::-webkit-media-controls-fullscreen-button {
+    background-color: green;
+  }
+  .audio-container {
+    width: 60%;
+  }
+  .audio-container1 {
+    width: 60%;
+    display: flex;
+    flex-direction: row;
+  }
+  .songs-list-sm {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .onClickEditorsBg {
+    padding-left: 40px;
+    background-color: #181818;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+  }
+  .back-btn {
+    background-color: transparent;
+    border-width: 0px;
+    color: #ffffff;
+    font-family: 'Roboto';
+    font-size: 15px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding-left: 20px;
+  }
+
+  .editors-pic-img {
+    margin-left: 40px;
+    width: 200px;
+    height: 200px;
+  }
+  .editors-picks-paragraph {
+    font-family: Assistant;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 16px;
+    color: #9b9b9b;
+  }
+  .song-name {
+    font-family: Assistant;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 20px;
+
+    color: #ffffff;
+  }
+  .pic-container-editors {
+    display: flex;
+    flex-direction: column;
+    align-self: center;
+  }
+  .editor-pic-name-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .track-heading-container {
+    display: none;
+  }
+  .line {
+    display: none;
+  }
+  .editors-picks-paragraph12 {
+    font-family: Assistant;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    color: transparent;
+    width: 25%;
+  }
+  .editors-picks-paragraph11 {
+    display: none;
+  }
+  .editors-picks-paragraph1 {
+    font-family: Assistant;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    color: #ffffff;
+    width: 25%;
+  }
+  .songs-list {
+    list-style-type: none;
+    width: 100%;
+  }
+
+  .track-heading-container1 {
+    display: none;
+  }
+  .bottom-play-container {
+    width: 100%;
+    border: 2px solid #475569;
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+    height: 100px;
+  }
+  .play-img {
+    height: 70px;
+    width: 70px;
+  }
+  .artist {
+    font-family: Assistant;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 13px;
+    color: #475569;
+  }
+  .bottom-img-song-container {
+    display: flex;
+    flex-direction: row;
+    margin-top: 10px;
+    justify-content: space-between;
+    width: 100%;
+  }
+  .editors-picks-paragraph-h {
+    font-family: Assistant;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    color: #ffffff;
+  }
+  .e-d-p-c {
+    margin-left: 10px;
+  }
+
+  audio::-webkit-media-controls-fullscreen-button {
+    background-color: green;
+  }
+  .audio-container {
+    width: 60%;
+  }
+  .audio-container1 {
+    width: 60%;
+    display: flex;
+    flex-direction: row;
+  }
+  .editors-picks-paragraph-hide-sm {
+    display: none;
+  }
+  .songs-list-sm {
+    list-style-type: none;
+    width: 100%;
+  }
+  .track-heading-container-sm {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+  }
+  .song-name-onClick-sm-container {
+    width: 80%;
+  }
+  .editors-picks-paragraph-sm {
+    color: #9b9b9b;
+    font-size: 12px;
+  }
 }
