@@ -1,12 +1,21 @@
+import './index.css'
+
 const yourMusicSongsItem = props => {
-  const {songsList, selectedSong} = props
+  const {songsList, selectedSong, isSongSelected} = props
 
   const onClickSong = () => {
     selectedSong(songsList.id)
   }
 
+  const changeSelectedSongClassName = isSongSelected
+    ? `select-song`
+    : `unselect-song`
+
   return (
-    <li className="music-list" onClick={onClickSong}>
+    <li
+      onClick={onClickSong}
+      className={`music-list ${changeSelectedSongClassName}`}
+    >
       <div>
         <img src={songsList.url} alt={songsList.songName} className="movie" />
       </div>

@@ -2,6 +2,12 @@ import './index.css'
 import {Link} from 'react-router-dom'
 import {Component} from 'react'
 
+import Cookies from 'js-cookie'
+
+const moment = require('moment')
+
+moment().format()
+
 const editorsPicsList = [
   {
     id: 0,
@@ -339,7 +345,37 @@ const id1 = 'genre'
 const id2 = 'newReleases'
 
 class Home extends Component {
+  state = {
+    playList: '',
+  }
+
+  componentDidMount() {
+    this.getFeaturedPlaylistsEditors()
+  }
+
+  getFeaturedPlaylistsEditors = async () => {
+    const token = Cookies.get('pa_token')
+    const timeStamp = moment(new Date()).format('YYYY-MM-DDTHH:00:00')
+    const country = 'IN'
+
+    const apiUrl = `https://api.spotify.com/v1/browse/featured-playlists?country=${country}&timestamp=${timeStamp}`
+    const options = {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+      method: 'GET',
+    }
+    const response = await fetch(apiUrl, options)
+    if (response.ok === true) {
+      const fetchedData = await response.json()
+      const data = fetchedData.playlists
+      this.setState({playList: data})
+    }
+  }
+
   render() {
+    const {playList} = this.state
+    console.log(playList.items)
     return (
       <div className="home-container">
         <h1 className="editors-heading">Editors picks</h1>

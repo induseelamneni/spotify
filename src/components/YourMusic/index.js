@@ -82,14 +82,20 @@ const YourMusicSongsList = [
 class YourMusic extends Component {
   state = {
     selectedSongName: YourMusicSongsList[0],
+    selectSongId: YourMusicSongsList[0].id,
   }
 
   selectedSong = id => {
-    this.setState({selectedSongName: YourMusicSongsList[id]})
+    this.setState({
+      selectedSongName: YourMusicSongsList[id],
+      selectSongId: YourMusicSongsList[id].id,
+    })
   }
 
   render() {
-    const {selectedSongName} = this.state
+    const {selectedSongName, selectSongId} = this.state
+    console.log(selectSongId)
+
     return (
       <div className="your-music-container">
         <h1 className="playlist-heading">Your Music</h1>
@@ -99,6 +105,7 @@ class YourMusic extends Component {
               key={item.id}
               selectedSong={this.selectedSong}
               songsList={item}
+              isSongSelected={selectSongId === item.id}
             />
           ))}
         </ul>

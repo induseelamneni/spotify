@@ -1,0 +1,7 @@
+.select-song {
+  background-color: #303030;
+  width: 100%;
+}
+.unselect-song {
+  background-color: transparent;
+}

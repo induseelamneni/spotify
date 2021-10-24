@@ -1,6 +1,7 @@
 import {Component} from 'react'
 import './index.css'
 import {BiArrowBack} from 'react-icons/bi'
+import OnClickNewReleasesSongItem from '../OnClickNewReleasesSongItem'
 
 const NewReleases = [
   {
@@ -115,72 +116,84 @@ const NewReleases = [
 
 const songsList = [
   {
-    no: 1,
+    id: 0,
     track: 'Tholiprema',
 
     time: '02:55',
 
-    popularity: '||||||||',
+    popularity: '6',
   },
   {
-    no: 2,
+    id: 1,
     track: 'Yean',
 
     time: '02:55',
 
-    popularity: '||||||',
+    popularity: '5',
   },
   {
-    no: 3,
+    id: 2,
     track: 'Vasanthna  kaalangal',
 
     time: '02:55',
 
-    popularity: '||||||',
+    popularity: '4',
   },
   {
-    no: 4,
+    id: 3,
     track: 'Love u chinna',
 
     time: '02:55',
 
-    popularity: '|||||||||',
+    popularity: '8',
   },
   {
-    no: 5,
+    id: 4,
     track: 'Neeve Neeve',
 
     time: '02:55',
 
-    popularity: '||||||',
+    popularity: '4',
   },
   {
-    no: 6,
+    id: 5,
     track: 'Hoyna Hoyna ',
 
     time: '02:55',
 
-    popularity: '||||||',
+    popularity: '7',
   },
   {
-    no: 7,
+    id: 6,
     track: 'Bujji Bangarm',
 
     time: '02:55',
 
-    popularity: '||||||||',
+    popularity: '9',
   },
   {
-    no: 8,
+    id: 7,
     track: 'Kaathalae kaathalae - Version 2',
 
     time: '02:55',
 
-    popularity: '|||||||',
+    popularity: '10',
   },
 ]
 
 class OnNewReleases extends Component {
+  state = {
+    selectedSongName: songsList[0],
+    selectSongId: songsList[0].id,
+  }
+
+  selectedSong = id => {
+    this.setState({
+      selectedSongName: songsList[id],
+      selectSongId: songsList[id].id,
+    })
+  }
+
   onClickHome = () => {
     const {history} = this.props
 
@@ -189,11 +202,11 @@ class OnNewReleases extends Component {
 
   render() {
     const {match} = this.props
-    console.log(match)
+
     const {params} = match
     const {id2} = params
     const cardId = Number(id2)
-    console.log(cardId)
+    const {selectedSongName, selectSongId} = this.state
 
     return (
       <div className="on-new-releases-bg">
@@ -214,7 +227,9 @@ class OnNewReleases extends Component {
           </div>
         </div>
         <div className="track-heading-container">
-          <p className="editors-picks-paragraph12">Track </p>
+          <p className="editors-picks-paragraph1 editors-picks-paragraph16">
+            #
+          </p>
           <p className="editors-picks-paragraph1">Track </p>
 
           <p className="editors-picks-paragraph1">Time </p>
@@ -224,30 +239,23 @@ class OnNewReleases extends Component {
         <hr className="line" />
         <ul className="songs-list">
           {songsList.map(eachSong => (
-            <li key={eachSong.no} className="track-heading-container1">
-              <p className="editors-picks-paragraph11">{eachSong.no}</p>
-              <p className="editors-picks-paragraph1">{eachSong.track}</p>
-
-              <p className="editors-picks-paragraph1">{eachSong.time}</p>
-
-              <p className="editors-picks-paragraph1">{eachSong.popularity}</p>
-            </li>
+            <OnClickNewReleasesSongItem
+              key={eachSong.id}
+              selectedSong={this.selectedSong}
+              songsList={eachSong}
+              isActive={selectSongId === eachSong.id}
+            />
           ))}
         </ul>
 
         <ul className="songs-list-sm">
           {songsList.map(eachSong => (
-            <li key={eachSong.no} className="track-heading-container-sm">
-              <div className="song-name-onClick-sm-container">
-                <p className="editors-picks-paragraph1">{eachSong.track}</p>
-                <p className="editors-picks-paragraph-sm">
-                  The Life of Ram Late Sri Tangutoori Surya Kumari
-                </p>
-              </div>
-              <div>
-                <p className="editors-picks-paragraph-p1">{eachSong.time}</p>
-              </div>
-            </li>
+            <OnClickNewReleasesSongItem
+              key={eachSong.id}
+              selectedSong={this.selectedSong}
+              songsList={eachSong}
+              isActive={selectSongId === eachSong.id}
+            />
           ))}
         </ul>
 
@@ -261,9 +269,9 @@ class OnNewReleases extends Component {
               />
               <div className="e-d-p-c">
                 <h1 className="editors-picks-paragraph-h">
-                  {NewReleases[cardId].songTitle}
+                  {NewReleases[cardId].name}
                 </h1>
-                <p className="artist">Naresh Iyer, Swetha</p>
+                <p className="artist">{selectedSongName.track}</p>
               </div>
             </div>
             <div className="audio-container">

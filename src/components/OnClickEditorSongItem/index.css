@@ -1,0 +1,19 @@
+.select-song {
+  background-color: #303030;
+  width: 100%;
+}
+.unselect-song {
+  background-color: transparent;
+}
+
+@media screen and (max-width: 768px) {
+  .track-heading-container1 {
+    display: none;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .track-heading-container-sm {
+    display: none;
+  }
+}

@@ -1,10 +1,11 @@
 import {Component} from 'react'
 import './index.css'
 import {BiArrowBack} from 'react-icons/bi'
+import OnClickPodcastAndPlayListSongItem from '../OnClickPodcastAndPlayListSongItem'
 
 const songsList = [
   {
-    no: 1,
+    id: 0,
     track: 'The Life of  Ram ',
     album: '96',
     time: '02:55',
@@ -12,7 +13,7 @@ const songsList = [
     added: '2 Months ago',
   },
   {
-    no: 2,
+    id: 1,
     track: 'Neetho unte',
     album: 'Josh',
     time: '02:55',
@@ -20,7 +21,7 @@ const songsList = [
     added: '5 days  ago',
   },
   {
-    no: 3,
+    id: 2,
     track: 'Seetha andhallu ',
     album: 'Subbasankalpam',
     time: '02:55',
@@ -28,7 +29,7 @@ const songsList = [
     added: '2 years ago',
   },
   {
-    no: 4,
+    id: 3,
     track: 'Love u chinna',
     album: 'Love mocktail',
     time: '02:55',
@@ -36,7 +37,7 @@ const songsList = [
     added: '2 Months ago',
   },
   {
-    no: 5,
+    id: 4,
     track: 'Neeve Neeve',
     album: 'Amma nanna oka thamil ammayi ',
     time: '02:55',
@@ -44,7 +45,7 @@ const songsList = [
     added: '1 Months ago',
   },
   {
-    no: 6,
+    id: 5,
     track: 'Hoyna Hoyna ',
     album: 'Kaathalae kaathalae - Version 1',
     time: '02:55',
@@ -52,7 +53,7 @@ const songsList = [
     added: '6 Months ago',
   },
   {
-    no: 7,
+    id: 6,
     track: 'Bujji Bangarm',
     album: 'Guna369',
     time: '02:55',
@@ -60,7 +61,7 @@ const songsList = [
     added: '8 days ago',
   },
   {
-    no: 8,
+    id: 7,
     track: 'Kaathalae kaathalae - Version 2',
     album: 'Tholiprema ',
     time: '02:55',
@@ -70,6 +71,18 @@ const songsList = [
 ]
 
 class OnClickPodcastAndPlayList extends Component {
+  state = {
+    selectedSongName: songsList[0],
+    selectSongId: songsList[0].id,
+  }
+
+  selectedSong = id => {
+    this.setState({
+      selectedSongName: songsList[id],
+      selectSongId: songsList[id].id,
+    })
+  }
+
   onClickHome = () => {
     const {history} = this.props
     console.log(history)
@@ -78,6 +91,8 @@ class OnClickPodcastAndPlayList extends Component {
   }
 
   render() {
+    const {selectedSongName, selectSongId} = this.state
+
     return (
       <div className="onClickEditorsBg">
         <button type="button" className="back-btn" onClick={this.onClickHome}>
@@ -121,7 +136,7 @@ class OnClickPodcastAndPlayList extends Component {
         </div>
 
         <div className="track-heading-container">
-          <p className="editors-picks-paragraph12">Track </p>
+          <p className="editors-picks-paragraph1">Track </p>
           <p className="editors-picks-paragraph1">Track </p>
           <p className="editors-picks-paragraph1">Album </p>
           <p className="editors-picks-paragraph1">Time </p>
@@ -131,30 +146,23 @@ class OnClickPodcastAndPlayList extends Component {
         <hr className="line" />
         <ul className="songs-list">
           {songsList.map(eachSong => (
-            <li key={eachSong.no} className="track-heading-container1">
-              <p className="editors-picks-paragraph11">{eachSong.no}</p>
-              <p className="editors-picks-paragraph1">{eachSong.track}</p>
-              <p className="editors-picks-paragraph1">{eachSong.album}</p>
-              <p className="editors-picks-paragraph1">{eachSong.time}</p>
-              <p className="editors-picks-paragraph1">{eachSong.artist}</p>
-              <p className="editors-picks-paragraph1">{eachSong.added}</p>
-            </li>
+            <OnClickPodcastAndPlayListSongItem
+              key={eachSong.id}
+              songsList={eachSong}
+              selectedSong={this.selectedSong}
+              isActive={selectSongId === eachSong.id}
+            />
           ))}
         </ul>
 
         <ul className="songs-list-sm">
           {songsList.map(eachSong => (
-            <li key={eachSong.no} className="track-heading-container-sm">
-              <div className="song-name-onClick-sm-container">
-                <p className="editors-picks-paragraph1">{eachSong.track}</p>
-                <p className="editors-picks-paragraph-sm">
-                  The Life of Ram Late Sri Tangutoori Surya Kumari
-                </p>
-              </div>
-              <div>
-                <p className="editors-picks-paragraph-sm">{eachSong.time}</p>
-              </div>
-            </li>
+            <OnClickPodcastAndPlayListSongItem
+              key={eachSong.id}
+              songsList={eachSong}
+              selectedSong={this.selectedSong}
+              isActive={selectSongId === eachSong.id}
+            />
           ))}
         </ul>
 
@@ -168,7 +176,7 @@ class OnClickPodcastAndPlayList extends Component {
               />
               <div className="e-d-p-c">
                 <h1 className="editors-picks-paragraph-h">Avunanna</h1>
-                <p className="artist">Naresh Iyer, Swetha</p>
+                <p className="artist">{selectedSongName.track}</p>
               </div>
             </div>
             <div className="audio-container">

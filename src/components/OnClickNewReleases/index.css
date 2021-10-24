@@ -2,7 +2,7 @@
   padding-left: 40px;
   background-color: #181818;
   width: 100%;
-  height: 300vh;
+  height: 120vh;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -26,7 +26,7 @@
   }
 
   .on-new-releases-bg {
-    width: 70%;
+    width: 100%;
     height: 100vh;
   }
   .editors-picks-paragraph1 {
@@ -36,5 +36,30 @@
   .editors-picks-paragraph-p1 {
     color: #9b9b9b;
     font-size: 12px;
+  }
+  .songs-list-new-release-lg {
+    display: none;
+  }
+  .songs-list-new-release-sm {
+    display: flex;
+    flex-direction: column;
+  }
+}
+@media screen and (min-width: 768px) {
+  .editors-picks-paragraph-sm {
+    color: #ffffff;
+    font-family: 'Roboto';
+    font-size: 15px;
+  }
+
+  .editors-picks-paragraph16 {
+    margin-left: 40px;
+  }
+  .songs-list-new-release-lg {
+    display: flex;
+    flex-direction: column;
+  }
+  .songs-list-new-release-sm {
+    display: none;
   }
 }
