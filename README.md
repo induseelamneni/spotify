@@ -1,8 +1,4 @@
-#### Sample Out Put
-
-<video loop="true" autoplay="autoplay" controls="controls" muted>
-  <source src="https://res.cloudinary.com/dmd5feuh9/video/upload/v1635065309/githubpostvideo_phszg8.mp4" type="video/mp4" />
-</video>
+Watch the sample video [here](https://res.cloudinary.com/dmd5feuh9/video/upload/v1635065309/githubpostvideo_phszg8.mp4)
 
 ##### App Description
 
