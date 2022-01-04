@@ -5,10 +5,17 @@
 .unselect-song {
   background-color: transparent;
 }
+.time {
+  margin-left: 5%;
+}
 
 @media screen and (max-width: 768px) {
   .track-heading-container1 {
     display: none;
+  }
+
+  .song-name-onClick-sm-container {
+    height: 120%;
   }
 }
 

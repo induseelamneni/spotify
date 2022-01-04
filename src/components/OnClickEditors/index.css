@@ -1,9 +1,9 @@
 @media screen and (min-width: 768px) {
-  .onClickEditorsBg {
+  .on-click-editors-bg {
     padding-left: 40px;
     background-color: #181818;
     width: 100%;
-    height: 300vh;
+    min-height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -41,7 +41,7 @@
     font-family: Assistant;
     font-style: normal;
     font-weight: 600;
-    font-size: 80px;
+    font-size: 50px;
 
     color: #ffffff;
   }
@@ -56,8 +56,10 @@
     width: 100%;
     display: flex;
     flex: row;
+    text-align: flex-start;
     align-items: center;
     justify-content: space-around;
+    margin-left: 5%;
   }
   .line {
     width: 100%;
@@ -96,6 +98,7 @@
     width: 100%;
     display: flex;
     flex: row;
+    text-align: flex-start;
     align-items: flex-start;
     justify-content: space-around;
     margin-bottom: 20px;
@@ -154,16 +157,21 @@
   }
 }
 
+@media screen and (max-width: 420px) {
+  .on-click-editors-bg {
+    padding-left: 0px;
+  }
+}
+
 @media screen and (max-width: 768px) {
   .songs-list {
     display: none;
   }
 
-  .onClickEditorsBg {
-    padding-left: 40px;
+  .on-click-editors-bg {
     background-color: #181818;
     width: 100%;
-    height: 100vh;
+    min-height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -183,8 +191,8 @@
 
   .editors-pic-img {
     margin-left: 40px;
-    width: 200px;
-    height: 200px;
+    width: 100px;
+    height: 100px;
   }
   .editors-picks-paragraph {
     font-family: Assistant;
@@ -299,6 +307,7 @@
   .songs-list-sm {
     list-style-type: none;
     width: 100%;
+    margin-left: 0px;
   }
   .track-heading-container-sm {
     display: flex;
@@ -311,5 +320,8 @@
   .editors-picks-paragraph-sm {
     color: #9b9b9b;
     font-size: 12px;
+  }
+  .audio-container {
+    display: none;
   }
 }

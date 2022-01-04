@@ -4,12 +4,13 @@
     font-family: 'Roboto';
     font-size: 50px;
     font-weight: 500;
+    min-height: 100vh;
   }
   .home-container {
     padding-left: 10px;
     background-color: transparent;
-    width: 70%;
-    height: 300vh;
+    width: 100%;
+    min-height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -33,14 +34,17 @@
   .pic-name {
     font-family: Assistant;
     font-style: normal;
-    font-weight: 600;
+    font-weight: 400;
     font-size: 16px;
-
+    box-sizing: border-box;
+    flex-wrap: wrap;
+    text-align: center;
     color: #f8fafc;
   }
   .editors-pics-ul-container {
-    width: 150%;
+    width: 100%;
     display: flex;
+    align-items: flex-start;
     flex-direction: row;
     flex-wrap: wrap;
     padding-top: 20px;
@@ -52,6 +56,11 @@
     margin-bottom: 20px;
     margin-right: 20px;
     text-align: center;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    box-sizing: border-box;
+    width: 200px;
   }
   .list-item1 {
     list-style-type: none;
@@ -175,9 +184,42 @@
   }
 }
 
+.failure-img {
+  width: 350px;
+  height: 350px;
+}
+
+.failure-container {
+  background-color: transparent;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.retry-btn {
+  background-color: #3965c5;
+  color: #ffffff;
+  padding: 15px;
+  border-width: 0px;
+  margin-top: 10px;
+}
+
+@media screen and (max-width: 420px) {
+  .home-container {
+    min-height: 100vh;
+  }
+  .failure-img {
+    width: 150px;
+    height: 150px;
+  }
+}
+
 @media screen and (max-width: 768px) {
   .home {
     color: black;
+    min-height: 100vh;
     font-family: 'Roboto';
     font-size: 50px;
     font-weight: 500;
@@ -186,7 +228,7 @@
     padding-left: 10px;
     background-color: transparent;
     width: 120%;
-    height: 630vh;
+    min-height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -204,47 +246,46 @@
     text-align: left;
   }
   .image-style {
-    width: 200px;
-    height: 200px;
+    width: 100px;
+    height: 100px;
   }
   .pic-name {
     font-family: Assistant;
     font-style: normal;
-    font-weight: 600;
-    font-size: 16px;
+    font-weight: 400;
+    font-size: 10px;
 
     color: #f8fafc;
   }
   .editors-pics-ul-container {
-    width: 150%;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    padding-top: 20px;
+    padding-top: 10px;
   }
   .list-item {
     list-style-type: none;
-    margin-top: 30px;
-    margin-left: 30px;
-    margin-bottom: 20px;
-    margin-right: 20px;
+    margin-top: 10px;
+    margin-left: 10px;
+    margin-bottom: 10px;
+    margin-right: 10px;
     text-align: center;
+    width: 100px;
   }
   .list-item1 {
     list-style-type: none;
-    margin-top: 20px;
-    margin-left: 20px;
-    margin-bottom: 20px;
-    margin-right: 20px;
+    margin-top: 10px;
+    margin-left: 10px;
+    margin-bottom: 10px;
+    margin-right: 10px;
     text-align: center;
   }
 
   .image-style1 {
-    padding-top: 20px;
-    margin-left: 60px;
-
-    width: 130px;
-    height: 130px;
+    margin-left: 45px;
+    margin-bottom: 20px;
+    width: 50px;
+    height: 50px;
   }
   .type {
     font-family: Assistant;
@@ -263,109 +304,127 @@
   .background1 {
     background-color: #ec6d45;
     border-radius: 10px;
-    height: 190px;
-    width: 190px;
+    height: 100px;
+    width: 100px;
   }
   .background2 {
     background-color: #e39c40;
     border-radius: 10px;
-    height: 190px;
-    width: 190px;
+    height: 100px;
+    width: 100px;
   }
   .background3 {
     background-color: #44b844;
     border-radius: 10px;
-    height: 190px;
-    width: 190px;
+    height: 100px;
+    width: 100px;
   }
   .background4 {
     background-color: #4b5b63;
     border-radius: 10px;
-    height: 190px;
-    width: 190px;
+    height: 100px;
+    width: 100px;
   }
   .background5 {
     background-color: #d8383b;
     border-radius: 10px;
-    height: 190px;
-    width: 190px;
+    height: 100px;
+    width: 100px;
   }
   .background6 {
     background-color: #7f5fff;
     border-radius: 10px;
-    height: 190px;
-    width: 190px;
+    height: 100px;
+    width: 100px;
   }
   .background7 {
     background-color: #3965c5;
     border-radius: 10px;
-    height: 190px;
-    width: 190px;
+    height: 100px;
+    width: 100px;
   }
   .background8 {
     background-color: #9eb8c6;
     border-radius: 10px;
-    height: 190px;
-    width: 190px;
+    height: 100px;
+    width: 100px;
   }
   .background9 {
     background-color: #3aadc9;
     border-radius: 10px;
-    height: 190px;
-    width: 190px;
+    height: 100px;
+    width: 100px;
   }
   .background10 {
     background-color: #8abf3d;
     border-radius: 10px;
-    height: 190px;
-    width: 190px;
+    height: 100px;
+    width: 100px;
   }
   .background11 {
     background-color: #4840ca;
     border-radius: 10px;
-    height: 190px;
-    width: 190px;
+    height: 100px;
+    width: 100px;
   }
   .background12 {
     background-color: #006369;
     border-radius: 10px;
-    height: 190px;
-    width: 190px;
+    height: 100px;
+    width: 100px;
   }
   .background13 {
     background-color: #d28935;
     border-radius: 10px;
-    height: 190px;
-    width: 190px;
+    height: 100px;
+    width: 100px;
   }
   .background14 {
     background-color: #8635cf;
     border-radius: 10px;
-    height: 190px;
-    width: 190px;
+    height: 100px;
+    width: 100px;
   }
   .background15 {
     background-color: #34c598;
     border-radius: 10px;
-    height: 190px;
-    width: 190px;
+    height: 100px;
+    width: 100px;
   }
   .background16 {
     background-color: #c73555;
     border-radius: 10px;
-    height: 190px;
-    width: 190px;
+    height: 100px;
+    width: 100px;
   }
   .background17 {
     background-color: #ac3eba;
     border-radius: 10px;
-    height: 190px;
-    width: 190px;
+    height: 100px;
+    width: 100px;
   }
   .background18 {
     background-color: #279653;
     border-radius: 10px;
-    height: 190px;
-    width: 190px;
+    height: 100px;
+    width: 100px;
+  }
+}
+
+@media screen and (max-width: 420px) {
+  .editors-pics-ul-container {
+    width: 100%;
+  }
+}
+
+.retry-heading {
+  color: #ffffff;
+  font-size: 24px;
+  font-family: 'Roboto';
+}
+
+@media screen and (max-width: 420px) {
+  .retry-heading {
+    font-size: 12px;
   }
 }

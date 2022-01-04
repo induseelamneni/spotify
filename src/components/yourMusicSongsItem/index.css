@@ -1,7 +1,25 @@
-.select-song {
-  background-color: #303030;
-  width: 100%;
+@media screen and (min-width: 768px) {
+  .select-song {
+    background-color: #303030;
+    width: 100%;
+  }
+  .unselect-song {
+    background-color: transparent;
+    width: 100%;
+  }
 }
-.unselect-song {
-  background-color: transparent;
+
+@media screen and (max-width: 768px) {
+  .music-name {
+    width: 80%;
+  }
+}
+
+@media screen and (max-width: 420px) {
+  .select-song {
+    width: 100%;
+  }
+  .unselect-song {
+    width: 100%;
+  }
 }

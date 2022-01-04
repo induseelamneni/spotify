@@ -16,7 +16,10 @@
     "react": "17.0.1",
     "react-dom": "17.0.1",
     "react-icons": "4.2.0",
-    "react-router-dom": "5.2.0"
+    "react-loader-spinner": "4.0.0",
+    "react-router-dom": "5.2.0",
+    "time-format-js": "1.0.2",
+    "time_format": "0.0.7"
   },
   "devDependencies": {
     "eslint-config-airbnb": "18.2.1",

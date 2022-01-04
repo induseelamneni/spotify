@@ -94,7 +94,7 @@ class OnClickPodcastAndPlayList extends Component {
     const {selectedSongName, selectSongId} = this.state
 
     return (
-      <div className="onClickEditorsBg">
+      <div className="on-click-editors-bg">
         <button type="button" className="back-btn" onClick={this.onClickHome}>
           <BiArrowBack />
           <p>Back</p>

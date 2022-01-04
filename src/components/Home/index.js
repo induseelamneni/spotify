@@ -1,6 +1,7 @@
 import './index.css'
 import {Link} from 'react-router-dom'
 import {Component} from 'react'
+import Loader from 'react-loader-spinner'
 
 import Cookies from 'js-cookie'
 
@@ -8,7 +9,232 @@ const moment = require('moment')
 
 moment().format()
 
-const editorsPicsList = [
+const apiStatusConstants = {
+  initial: 'INITIAL',
+  success: 'SUCCESS',
+  failure: 'FAILURE',
+  inProgress: 'IN_PROGRESS',
+}
+
+class Home extends Component {
+  state = {
+    playListTitle: '',
+    playList: '',
+    genresAndMoods: '',
+    newReleases: '',
+    fetchingDataStatus: apiStatusConstants.initial,
+  }
+
+  componentDidMount() {
+    this.getFeaturedPlaylistsEditors()
+  }
+
+  getFeaturedPlaylistsEditors = async () => {
+    this.setState({fetchingDataStatus: apiStatusConstants.inProgress})
+    const token = Cookies.get('pa_token')
+
+    const options1 = {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+      method: 'GET',
+    }
+    const responseUserName = await fetch(
+      'https://api.spotify.com/v1/me',
+      options1,
+    )
+    const userData = await responseUserName.json()
+    console.log(userData.country)
+
+    const usercountry = userData.country
+
+    const timestamp = moment(new Date()).format('YYYY-MM-DDTHH:00:00')
+
+    const apiUrl = `https://api.spotify.com/v1/browse/featured-playlists?country=${usercountry}&timestamp=${timestamp}`
+    const apiUrlCategoryGenresAndMoods = `https://api.spotify.com/v1/browse/categories`
+    const apiUrlNewReleases = `https://api.spotify.com/v1/browse/new-releases?country=${usercountry}`
+
+    const options = {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+      method: 'GET',
+    }
+    const response = await fetch(apiUrl, options)
+    const responseForGenre = await fetch(apiUrlCategoryGenresAndMoods, options)
+    const responseForNewReleases = await fetch(apiUrlNewReleases, options)
+
+    if (response.ok) {
+      const fetchedData = await response.json()
+
+      const msg = fetchedData.message
+
+      const data = fetchedData.playlists.items
+
+      const updatedData = data.map(each => ({
+        id: each.id,
+        url: each.images
+          .map(imgUrl => imgUrl.url)
+          .map(eachImg => ({
+            imgUrl: eachImg,
+          })),
+        name: each.name,
+      }))
+
+      const fetchedDataForGenre = await responseForGenre.json()
+
+      const genreAndMoodsData = fetchedDataForGenre.categories.items
+
+      const categoryUpdatedData = genreAndMoodsData.map(each => ({
+        id: each.id,
+        iconUrl: each.icons
+          .map(eachI => eachI.url)
+          .map(icon => ({
+            iconUrl: icon,
+          })),
+        name: each.name,
+      }))
+
+      const fetchedDataForNewReleases = await responseForNewReleases.json()
+
+      const dataForNewReleases = fetchedDataForNewReleases.albums.items
+
+      const updatedDataForNewRelease = dataForNewReleases.map(each => ({
+        id: each.id,
+        url: each.images
+          .map(imgUrl => imgUrl.url)
+          .map(eachImg => ({
+            imgUrl: eachImg,
+          })),
+        name: each.name,
+      }))
+
+      this.setState({
+        playListTitle: msg,
+        playList: updatedData,
+        genresAndMoods: categoryUpdatedData,
+        newReleases: updatedDataForNewRelease,
+        fetchingDataStatus: apiStatusConstants.success,
+      })
+    } else {
+      this.setState({
+        fetchingDataStatus: apiStatusConstants.failure,
+      })
+    }
+  }
+
+  successView = () => {
+    const {playList, playListTitle, genresAndMoods, newReleases} = this.state
+
+    return (
+      <>
+        <h1 className="editors-heading">{playListTitle}</h1>
+        <ul className="editors-pics-ul-container">
+          {playList.map(item => (
+            <li className="list-item" key={item.id} id={item.id}>
+              <Link to={`editors/${item.id}`}>
+                <img
+                  src={item.url[0].imgUrl}
+                  alt="imageurl"
+                  className="image-style"
+                />
+              </Link>
+              <p className="pic-name">{item.name}</p>
+            </li>
+          ))}
+        </ul>
+        <h1 className="editors-heading">Genres & Moods</h1>
+        <ul className="editors-pics-ul-container">
+          {genresAndMoods.map(item => (
+            <li className="list-item1" key={item.id}>
+              <Link
+                to={`genre/${item.id}`}
+                style={{padding: 10, textDecoration: 'none'}}
+              >
+                <div className="background13">
+                  <p className="type">{item.name}</p>
+                  <img
+                    src={item.iconUrl[0].iconUrl}
+                    alt="genere"
+                    className="image-style1"
+                  />
+                </div>
+              </Link>
+            </li>
+          ))}
+        </ul>
+        <h1 className="editors-heading">New releases</h1>
+        <ul className="editors-pics-ul-container">
+          {newReleases.map(item => (
+            <li className="list-item" key={item.id}>
+              <Link to={`newReleases/${item.id}`}>
+                <img
+                  src={item.url[1].imgUrl}
+                  alt={item.name}
+                  className="image-style"
+                />
+              </Link>
+              <p className="pic-name">{item.name}</p>
+            </li>
+          ))}
+        </ul>
+      </>
+    )
+  }
+
+  onClickRetryJobDetails = () => {
+    this.getFeaturedPlaylistsEditors()
+  }
+
+  failureView = () => (
+    <div className="failure-container">
+      <img
+        src="https://assets.ccbp.in/frontend/react-js/failure-img.png"
+        alt="failure view"
+        className="failure-img"
+      />
+      <h1 className="retry-heading">Oops! Something Went Wrong </h1>
+      <p className="retry-heading">
+        we cannot find the page you are looking for
+      </p>
+      <button
+        className="retry-btn"
+        type="button"
+        onClick={this.onClickRetryJobDetails}
+      >
+        Retry
+      </button>
+    </div>
+  )
+
+  loadingView = () => (
+    <div className="failure-container" testid="loader">
+      <Loader type="ThreeDots" color="#0b69ff" height="50" width="50" />
+    </div>
+  )
+
+  renderData = () => {
+    const {fetchingDataStatus} = this.state
+    switch (fetchingDataStatus) {
+      case apiStatusConstants.success:
+        return this.successView()
+      case apiStatusConstants.failure:
+        return this.failureView()
+      case apiStatusConstants.inProgress:
+        return this.loadingView()
+      default:
+        return null
+    }
+  }
+
+  render() {
+    return <div className="home-container">{this.renderData()}</div>
+  }
+}
+
+export default Home
+
+/* const editorsPicsList = [
   {
     id: 0,
     imgUrl:
@@ -228,7 +454,7 @@ const GenresAndMoods = [
 
     styling: 'background18',
   },
-]
+] 
 
 const NewReleases = [
   {
@@ -339,97 +565,4 @@ const NewReleases = [
       'https://res.cloudinary.com/dmd5feuh9/image/upload/v1628593380/Rectangle_545_gnnb9o.png',
     name: 'Ninnila Ninnila',
   },
-]
-const id = 'Editors'
-const id1 = 'genre'
-const id2 = 'newReleases'
-
-class Home extends Component {
-  state = {
-    playList: '',
-  }
-
-  componentDidMount() {
-    this.getFeaturedPlaylistsEditors()
-  }
-
-  getFeaturedPlaylistsEditors = async () => {
-    const token = Cookies.get('pa_token')
-    const timeStamp = moment(new Date()).format('YYYY-MM-DDTHH:00:00')
-    const country = 'IN'
-
-    const apiUrl = `https://api.spotify.com/v1/browse/featured-playlists?country=${country}&timestamp=${timeStamp}`
-    const options = {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-      method: 'GET',
-    }
-    const response = await fetch(apiUrl, options)
-    if (response.ok === true) {
-      const fetchedData = await response.json()
-      const data = fetchedData.playlists
-      this.setState({playList: data})
-    }
-  }
-
-  render() {
-    const {playList} = this.state
-    console.log(playList.items)
-    return (
-      <div className="home-container">
-        <h1 className="editors-heading">Editors picks</h1>
-        <ul className="editors-pics-ul-container">
-          {editorsPicsList.map(item => (
-            <li className="list-item" key={item.id} id={item.id}>
-              <Link to={`${item.id}/${id}`}>
-                <img
-                  src={item.imgUrl}
-                  alt={item.name}
-                  className="image-style"
-                />
-              </Link>
-              <p className="pic-name">{item.name}</p>
-            </li>
-          ))}
-        </ul>
-        <h1 className="editors-heading">Genres & Moods</h1>
-        <ul className="editors-pics-ul-container">
-          {GenresAndMoods.map(item => (
-            <li className="list-item1" key={item.id}>
-              <Link
-                to={`/${id1}/${item.id}`}
-                style={{padding: 10, textDecoration: 'none'}}
-              >
-                <div className={item.styling}>
-                  <p className="type">{item.type}</p>
-                  <img
-                    src={item.imgUrl}
-                    alt={item.name}
-                    className="image-style1"
-                  />
-                </div>
-              </Link>
-            </li>
-          ))}
-        </ul>
-        <h1 className="editors-heading">New releases</h1>
-        <ul className="editors-pics-ul-container">
-          {NewReleases.map(item => (
-            <li className="list-item" key={item.id}>
-              <Link to={`/${id2}/${item.id}/`}>
-                <img
-                  src={item.imgUrl}
-                  alt={item.name}
-                  className="image-style"
-                />
-              </Link>
-              <p className="pic-name">{item.name}</p>
-            </li>
-          ))}
-        </ul>
-      </div>
-    )
-  }
-}
-export default Home
+] */

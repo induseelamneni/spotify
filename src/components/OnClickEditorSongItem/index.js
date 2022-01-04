@@ -1,14 +1,25 @@
 import './index.css'
 
+const moment = require('moment')
+
 const OnClickEditorSongItem = props => {
   const {songsList, isActive, selectedSong} = props
+
+  const timeStamp = moment(new Date(songsList.time)).format('HH:MM')
+  const date = moment(new Date(songsList.time)).format('DD')
+
+  const presentDate = new Date().getDate()
+  let addedDate = presentDate - date
+
+  if (addedDate < 0) {
+    addedDate = addedDate * -1
+  }
 
   const onClickSong = () => {
     selectedSong(songsList.id)
   }
 
   const changeSelectedSongClassName = isActive ? `select-song` : `unselect-song`
-  console.log(changeSelectedSongClassName)
 
   return (
     <div>
@@ -19,12 +30,10 @@ const OnClickEditorSongItem = props => {
       >
         <div className="song-name-onClick-sm-container">
           <p className="editors-picks-paragraph1">{songsList.track}</p>
-          <p className="editors-picks-paragraph-sm">
-            The Life of Ram Late Sri Tangutoori Surya Kumari
-          </p>
+          <p className="editors-picks-paragraph-sm">{songsList.artist}</p>
         </div>
         <div>
-          <p className="editors-picks-paragraph-sm">{songsList.time}</p>
+          <p className="editors-picks-paragraph-sm">{timeStamp}</p>
         </div>
       </li>
 
@@ -33,12 +42,11 @@ const OnClickEditorSongItem = props => {
         className={`track-heading-container1 ${changeSelectedSongClassName}`}
         onClick={onClickSong}
       >
-        <p className="editors-picks-paragraph11">{songsList.id + 1}</p>
         <p className="editors-picks-paragraph1">{songsList.track}</p>
-        <p className="editors-picks-paragraph1">{songsList.album}</p>
-        <p className="editors-picks-paragraph1">{songsList.time}</p>
+        <p className="editors-picks-paragraph1">{songsList.track}</p>
+        <p className="editors-picks-paragraph1 time">{timeStamp}</p>
         <p className="editors-picks-paragraph1">{songsList.artist}</p>
-        <p className="editors-picks-paragraph1">{songsList.added}</p>
+        <p className="editors-picks-paragraph1">{addedDate} days ago</p>
       </li>
     </div>
   )

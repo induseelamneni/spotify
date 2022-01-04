@@ -201,11 +201,6 @@ class OnNewReleases extends Component {
   }
 
   render() {
-    const {match} = this.props
-
-    const {params} = match
-    const {id2} = params
-    const cardId = Number(id2)
     const {selectedSongName, selectSongId} = this.state
 
     return (
@@ -216,13 +211,13 @@ class OnNewReleases extends Component {
         </button>
         <div className="pic-container">
           <img
-            src={NewReleases[cardId].imgUrl}
-            alt={NewReleases[cardId].name}
+            src="https://res.cloudinary.com/dmd5feuh9/image/upload/v1628593380/Rectangle_545_gnnb9o.png"
+            alt="new"
             className="editors-pic-img"
           />
           <div className="editor-pic-name-container">
             <p className="editors-picks-paragraph-sm">New Releases</p>
-            <h1 className="song-name">{NewReleases[cardId].name}</h1>
+            <h1 className="song-name">new</h1>
             <p className="editors-picks-paragraph">Album by Rahul Raj,2011</p>
           </div>
         </div>
@@ -263,14 +258,12 @@ class OnNewReleases extends Component {
           <div className="bottom-img-song-container">
             <div className="audio-container1">
               <img
-                src={NewReleases[cardId].imgUrl}
-                alt={NewReleases[cardId].name}
+                src="https://res.cloudinary.com/dmd5feuh9/image/upload/v1628593380/Rectangle_545_gnnb9o.png"
+                alt="new"
                 className="play-img"
               />
               <div className="e-d-p-c">
-                <h1 className="editors-picks-paragraph-h">
-                  {NewReleases[cardId].name}
-                </h1>
+                <h1 className="editors-picks-paragraph-h">new</h1>
                 <p className="artist">{selectedSongName.track}</p>
               </div>
             </div>

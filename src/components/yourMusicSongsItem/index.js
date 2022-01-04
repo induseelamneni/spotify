@@ -17,12 +17,17 @@ const yourMusicSongsItem = props => {
       className={`music-list ${changeSelectedSongClassName}`}
     >
       <div>
-        <img src={songsList.url} alt={songsList.songName} className="movie" />
+        <img
+          src={songsList.imageUrl}
+          alt={songsList.songName}
+          className="movie"
+        />
       </div>
       <div className="song-name-container">
         <h1 className="song-name-heading">{songsList.songName}</h1>
-        <p className="music-name">{songsList.music}</p>
+        <p className="music-name">{songsList.MovieName}</p>
       </div>
+
       <div className="time-container">
         <p className="time">{songsList.time}</p>
       </div>

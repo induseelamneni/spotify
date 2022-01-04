@@ -3,85 +3,94 @@ import {Component} from 'react'
 import {BiArrowBack} from 'react-icons/bi'
 
 import {Link} from 'react-router-dom'
+import Loader from 'react-loader-spinner'
+
+import Cookies from 'js-cookie'
 
 import './index.css'
 
-const podCastPicList = [
-  {
-    id: 0,
-    imgUrl:
-      'https://res.cloudinary.com/dmd5feuh9/image/upload/v1633779448/Rectangle_458_2_c4py2b.png',
-    name: ' Purijaganth',
-    tracks: '30 Tracks',
-  },
-  {
-    id: 1,
-    imgUrl:
-      'https://res.cloudinary.com/dmd5feuh9/image/upload/v1633779409/Rectangle_459_5_irpiia.png',
-    name: ' Office Ladies',
-    tracks: '45 Tracks',
-  },
-  {
-    id: 2,
-    imgUrl:
-      'https://res.cloudinary.com/dmd5feuh9/image/upload/v1633779017/ranveer_1_yazdpu.png',
-    name: 'Ranveer',
-    tracks: '20 Tracks',
-  },
-  {
-    id: 3,
-    imgUrl:
-      'https://res.cloudinary.com/dmd5feuh9/image/upload/v1633779180/Rectangle_459_1_m8o9ma.png',
-    name: ' Joe Budden',
-    tracks: '20 Tracks',
-  },
-  {
-    id: 4,
-    imgUrl:
-      'https://res.cloudinary.com/dmd5feuh9/image/upload/v1633779210/Rectangle_459_2_ri0oh5.png',
-    name: 'Call her daddy',
-    tracks: '100 Tracks',
-  },
-  {
-    id: 5,
-    imgUrl:
-      'https://res.cloudinary.com/dmd5feuh9/image/upload/v1633779241/Rectangle_459_3_zpuqx6.png',
-    name: 'Son of a Hitman',
-    tracks: '60 Tracks',
-  },
-  {
-    id: 6,
-    imgUrl:
-      'https://res.cloudinary.com/dmd5feuh9/image/upload/v1633779270/Rectangle_458_1_ampnjs.png',
-    name: 'On Purpose',
-    tracks: '30 Tracks',
-  },
-  {
-    id: 7,
-    imgUrl:
-      'https://res.cloudinary.com/dmd5feuh9/image/upload/v1633779289/Rectangle_465_1_bfegnx.png',
-    name: 'Office Ladies',
-    tracks: '45 Tracks',
-  },
-  {
-    id: 8,
-    imgUrl:
-      'https://res.cloudinary.com/dmd5feuh9/image/upload/v1633779340/Rectangle_459_4_zowhfp.png',
-    name: 'Finshots',
-    tracks: '60 Tracks',
-  },
-]
+const apiStatusConstants = {
+  initial: 'INITIAL',
+  success: 'SUCCESS',
+  failure: 'FAILURE',
+  inProgress: 'IN_PROGRESS',
+}
 
 class OnClickGenresAndMoods extends Component {
+  state = {
+    fetchingDataStatus: apiStatusConstants.initial,
+    genreAndMoodsAlbumsList: [],
+  }
+
+  componentDidMount() {
+    this.getGenreAndMoodsSongsList()
+  }
+
+  getGenreAndMoodsSongsList = async () => {
+    this.setState({fetchingDataStatus: apiStatusConstants.inProgress})
+    const token = Cookies.get('pa_token')
+
+    const options1 = {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+      method: 'GET',
+    }
+    const responseUserName = await fetch(
+      'https://api.spotify.com/v1/me',
+      options1,
+    )
+    const userData = await responseUserName.json()
+    console.log(userData.country)
+
+    const usercountry = userData.country
+
+    const {match} = this.props
+    console.log(match)
+    const {params} = match
+    const {id} = params
+
+    const apiUrl = `https://api.spotify.com/v1/browse/categories/${id}/playlists?country=${usercountry}`
+    const options = {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+      method: 'GET',
+    }
+    const response = await fetch(apiUrl, options)
+
+    if (response.ok) {
+      const fetchedData = await response.json()
+      console.log(fetchedData)
+
+      const updatedData = fetchedData.playlists.items.map(each => ({
+        id: each.id,
+        name: each.name,
+        imageUrl: each.images[0].url,
+        tracksCount: each.tracks.total,
+      }))
+      console.log(updatedData)
+
+      this.setState({
+        genreAndMoodsAlbumsList: updatedData,
+        fetchingDataStatus: apiStatusConstants.success,
+      })
+    } else {
+      this.setState({fetchingDataStatus: apiStatusConstants.failure})
+    }
+  }
+
   onClickHomeInGenre = () => {
     const {history} = this.props
 
     return history.replace('/')
   }
 
-  render() {
+  successView = () => {
+    const {genreAndMoodsAlbumsList} = this.state
+
     return (
-      <div className="on-click-genres-bg">
+      <>
         <button
           type="button"
           className="back-btn"
@@ -92,25 +101,71 @@ class OnClickGenresAndMoods extends Component {
         </button>
         <div className="pic-container">
           <ul className="podcast-ul-list-type">
-            {podCastPicList.map(eachPic => (
+            {genreAndMoodsAlbumsList.map(eachPic => (
               <li key={eachPic.id} className="onClick-genre-sm">
                 <Link to="/playList">
                   <img
-                    src={eachPic.imgUrl}
+                    src={eachPic.imageUrl}
                     alt={eachPic.name}
                     className="podcast-pic"
                   />
                 </Link>
-                <div>
+                <div className="name-container">
                   <h1 className="director-name">{eachPic.name}</h1>
-                  <p className="no-of-tracks">{eachPic.tracks}</p>
+                  <p className="no-of-tracks">{eachPic.tracksCount} Tracks</p>
                 </div>
               </li>
             ))}
           </ul>
         </div>
-      </div>
+      </>
     )
+  }
+
+  failureView = () => (
+    <div className="failure-container">
+      <img
+        src="https://assets.ccbp.in/frontend/react-js/failure-img.png"
+        alt="failure view"
+        className="failure-img"
+      />
+      <h1 className="retry-heading">Oops! Something Went Wrong </h1>
+      <p className="retry-heading retry-para">
+        we cannot find the page you are looking for
+      </p>
+      <button
+        className="retry-btn"
+        type="button"
+        onClick={this.onClickRetryJobDetails}
+      >
+        Retry
+      </button>
+    </div>
+  )
+
+  loadingView = () => (
+    <div className="failure-container" testid="loader">
+      <Loader type="ThreeDots" color="#0b69ff" height="50" width="50" />
+    </div>
+  )
+
+  renderData = () => {
+    const {fetchingDataStatus} = this.state
+    switch (fetchingDataStatus) {
+      case apiStatusConstants.success:
+        return this.successView()
+      case apiStatusConstants.failure:
+        return this.failureView()
+      case apiStatusConstants.inProgress:
+        return this.loadingView()
+
+      default:
+        return null
+    }
+  }
+
+  render() {
+    return <div className="on-click-genres-bg">{this.renderData()}</div>
   }
 }
 

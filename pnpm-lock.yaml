@@ -8,7 +8,10 @@ dependencies:
   react: 17.0.1
   react-dom: 17.0.1_react@17.0.1
   react-icons: 4.2.0_react@17.0.1
+  react-loader-spinner: 4.0.0_react-dom@17.0.1+react@17.0.1
   react-router-dom: 5.2.0_react@17.0.1
+  time-format-js: 1.0.2
+  time_format: 0.0.7
 devDependencies:
   eslint-config-airbnb: 18.2.1
   eslint-config-prettier: 8.1.0
@@ -10238,6 +10241,17 @@ packages:
   /react-is/17.0.2:
     resolution:
       integrity: sha512-w2GsyukL62IJnlaff/nRegPQR94C/XXamvMWmSHRJ4y7Ts/4ocGRmTHvOs8PSE6pB3dWOrD/nueuU5sduBsQ4w==
+  /react-loader-spinner/4.0.0_react-dom@17.0.1+react@17.0.1:
+    dependencies:
+      prop-types: 15.7.2
+      react: 17.0.1
+      react-dom: 17.0.1_react@17.0.1
+    dev: false
+    peerDependencies:
+      react: '*'
+      react-dom: '*'
+    resolution:
+      integrity: sha512-RU2vpEej6G4ECei0h3q6bgLU10of9Lw5O+4AwF/mtkrX5oY20Sh/AxoPJ7etbrs/7Q3u4jN5qwCwGLRKCHpk6g==
   /react-refresh/0.8.3:
     dev: true
     engines:
@@ -11806,6 +11820,16 @@ packages:
     dev: true
     resolution:
       integrity: sha512-eHY7nBftgThBqOyHGVN+l8gF0BucP09fMo0oO/Lb0w1OF80dJv+lDVpXG60WMQvkcxAkNybKsrEIE3ZtKGmPrA==
+  /time-format-js/1.0.2:
+    dependencies:
+      vue: 2.6.14
+    dev: false
+    resolution:
+      integrity: sha512-LN9SOHqQsZ3OE4u/Li7dPXQt1YYvDRnIYcyVdKVOIOTK5Z8F5skIvdxmGujuePGAB4k+zNnpFCKPAJNUANquUw==
+  /time_format/0.0.7:
+    dev: false
+    resolution:
+      integrity: sha1-P94WKGjANCFOnmwU4OUnRvK47JM=
   /timers-browserify/2.0.12:
     dependencies:
       setimmediate: 1.0.5
@@ -12278,6 +12302,10 @@ packages:
     dev: true
     resolution:
       integrity: sha512-2ham8XPWTONajOR0ohOKOHXkm3+gaBmGut3SRuu75xLd/RRaY6vqgh8NBYYk7+RW3u5AtzPQZG8F10LHkl0lAQ==
+  /vue/2.6.14:
+    dev: false
+    resolution:
+      integrity: sha512-x2284lgYvjOMj3Za7kqzRcUSxBboHqtgRE2zlos1qWaOye5yUmHn42LB1250NJBLRwEcdrB0JRwyPTEPhfQjiQ==
   /w3c-hr-time/1.0.2:
     dependencies:
       browser-process-hrtime: 1.0.0
@@ -12868,5 +12896,8 @@ specifiers:
   react: 17.0.1
   react-dom: 17.0.1
   react-icons: 4.2.0
+  react-loader-spinner: 4.0.0
   react-router-dom: 5.2.0
   react-scripts: 4.0.3
+  time-format-js: 1.0.2
+  time_format: 0.0.7

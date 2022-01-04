@@ -15,9 +15,9 @@ const App = () => (
       <Route exact path="/login" component={LoginForm} />
       <ProtectedRoute exact path="/" component={SpotifyClone} />
 
-      <ProtectedRoute path="/:id/editors" component={OnClickEditors} />
-      <ProtectedRoute path="/genre/:id1" component={OnClickGenresAndMoods} />
-      <ProtectedRoute path="/newReleases/:id2" component={OnClickNewReleases} />
+      <ProtectedRoute path="/editors/:id" component={OnClickEditors} />
+      <ProtectedRoute path="/genre/:id" component={OnClickGenresAndMoods} />
+      <ProtectedRoute path="/newReleases/:id" component={OnClickNewReleases} />
       <ProtectedRoute path="/:id" component={OnClickPodcastAndPlayList} />
     </Switch>
   </BrowserRouter>
