@@ -103,7 +103,7 @@ class OnClickGenresAndMoods extends Component {
           <ul className="podcast-ul-list-type">
             {genreAndMoodsAlbumsList.map(eachPic => (
               <li key={eachPic.id} className="onClick-genre-sm">
-                <Link to="/playList">
+                <Link to={`/playList/${eachPic.id}`}>
                   <img
                     src={eachPic.imageUrl}
                     alt={eachPic.name}
@@ -120,6 +120,10 @@ class OnClickGenresAndMoods extends Component {
         </div>
       </>
     )
+  }
+
+  onClickRetryJobDetails = () => {
+    this.getGenreAndMoodsSongsList()
   }
 
   failureView = () => (

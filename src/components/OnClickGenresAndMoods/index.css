@@ -17,7 +17,7 @@
   list-style-type: none;
   flex-direction: row;
   flex-wrap: wrap;
-  width: 70%;
+  width: 100%;
 }
 .podcast-pic {
   width: 160px;
@@ -54,11 +54,12 @@
 @media screen and (max-width: 768px) {
   .onClick-genre-sm {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     width: 100px;
+    margin-right: 20px;
   }
   .on-click-genres-bg {
-    height: 200vh;
+    min-height: 200vh;
   }
   .podcast-pic {
     width: 100px;

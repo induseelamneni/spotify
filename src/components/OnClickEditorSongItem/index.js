@@ -3,7 +3,8 @@ import './index.css'
 const moment = require('moment')
 
 const OnClickEditorSongItem = props => {
-  const {songsList, isActive, selectedSong} = props
+  const {songsList, isActive, selectedSong, serialNo} = props
+  console.log(serialNo)
 
   const timeStamp = moment(new Date(songsList.time)).format('HH:MM')
   const date = moment(new Date(songsList.time)).format('DD')
@@ -12,7 +13,7 @@ const OnClickEditorSongItem = props => {
   let addedDate = presentDate - date
 
   if (addedDate < 0) {
-    addedDate = addedDate * -1
+    addedDate *= -1
   }
 
   const onClickSong = () => {

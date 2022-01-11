@@ -18,7 +18,11 @@ const App = () => (
       <ProtectedRoute path="/editors/:id" component={OnClickEditors} />
       <ProtectedRoute path="/genre/:id" component={OnClickGenresAndMoods} />
       <ProtectedRoute path="/newReleases/:id" component={OnClickNewReleases} />
-      <ProtectedRoute path="/:id" component={OnClickPodcastAndPlayList} />
+
+      <ProtectedRoute
+        path="/playList/:id"
+        component={OnClickPodcastAndPlayList}
+      />
     </Switch>
   </BrowserRouter>
 )

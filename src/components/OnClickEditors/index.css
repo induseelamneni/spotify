@@ -253,7 +253,7 @@
     display: none;
   }
   .bottom-play-container {
-    width: 100%;
+    width: 97%;
     border: 2px solid #475569;
     display: flex;
     flex-direction: column;
@@ -294,10 +294,16 @@
     background-color: green;
   }
   .audio-container {
-    width: 60%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .audio-control {
+    width: 110px;
+    height: 30px;
+    margin-right: 10px;
   }
   .audio-container1 {
-    width: 60%;
     display: flex;
     flex-direction: row;
   }
@@ -312,16 +318,10 @@
   .track-heading-container-sm {
     display: flex;
     flex-direction: row;
-    width: 100%;
   }
-  .song-name-onClick-sm-container {
-    width: 80%;
-  }
+
   .editors-picks-paragraph-sm {
     color: #9b9b9b;
     font-size: 12px;
-  }
-  .audio-container {
-    display: none;
   }
 }

@@ -83,6 +83,10 @@ class Profile extends Component {
     )
   }
 
+  onClickRetryJobDetails = () => {
+    this.getUserDetails()
+  }
+
   failureView = () => (
     <div className="failure-container">
       <img

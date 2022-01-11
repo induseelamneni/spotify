@@ -1,7 +1,19 @@
 import './index.css'
 
+const moment = require('moment')
+
 const OnClickPodcastAndPlayListSongItem = props => {
   const {songsList, selectedSong, isActive} = props
+
+  const timeStamp = moment(new Date(songsList.time)).format('HH:MM')
+  const date = moment(new Date(songsList.time)).format('DD')
+
+  const presentDate = new Date().getDate()
+  let addedDate = presentDate - date
+
+  if (addedDate < 0) {
+    addedDate *= -1
+  }
 
   const onClickSong = () => {
     selectedSong(songsList.id)
@@ -16,16 +28,14 @@ const OnClickPodcastAndPlayListSongItem = props => {
         className={`track-heading-container1 ${changeSelectedSongClassName}`}
         onClick={onClickSong}
       >
-        <p className="editors-picks-paragraph1">{songsList.id + 1}</p>
         <p className="editors-picks-paragraph1">{songsList.track}</p>
-        <p className="editors-picks-paragraph1">{songsList.album}</p>
-        <p className="editors-picks-paragraph1">{songsList.time}</p>
+        <p className="editors-picks-paragraph1">{songsList.track}</p>
+        <p className="editors-picks-paragraph1">{timeStamp}</p>
         <p className="editors-picks-paragraph1">{songsList.artist}</p>
-        <p className="editors-picks-paragraph1">{songsList.added}</p>
+        <p className="editors-picks-paragraph1">{addedDate} days ago</p>
       </li>
 
       <li
-        key={songsList.id}
         className={`track-heading-container-sm ${changeSelectedSongClassName}`}
         onClick={onClickSong}
       >
@@ -36,7 +46,7 @@ const OnClickPodcastAndPlayListSongItem = props => {
           </p>
         </div>
         <div>
-          <p className="editors-picks-paragraph-sm">{songsList.time}</p>
+          <p className="editors-picks-paragraph-sm">{timeStamp}</p>
         </div>
       </li>
     </div>

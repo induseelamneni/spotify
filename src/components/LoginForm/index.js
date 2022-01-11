@@ -84,12 +84,12 @@ class LoginForm extends Component {
       return 'http://localhost:3000/login'
     }
     /* Change this redirectURL accordingly before publishing your project and ADD THIS URL to your Application Redirect URIs to redirect after authentication success OR failure */
-    return 'https://spotifyindu.ccbp.tech/login'
+    return 'https://induspotify.ccbp.tech/login'
   }
 
   openLoginModal = () => {
     // YOU NEED TO ADD YOUR CLIENT ID HERE
-    const clientId = '6f63fa7a31c34b5b9949d0653489ac0a'
+    const clientId = 'c4bad01b30c6489090cb4b3356a74c46'
 
     const redirectUrl = this.getRedirectURL()
 

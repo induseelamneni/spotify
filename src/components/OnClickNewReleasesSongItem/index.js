@@ -1,7 +1,7 @@
 import './index.css'
 
 const OnClickNewReleasesSongItem = props => {
-  const {songsList, selectedSong, isActive} = props
+  const {songsList, selectedSong, isActive, popularity, releaseDate} = props
   console.log(songsList.popularity)
 
   const onClickSong = () => {
@@ -17,16 +17,14 @@ const OnClickNewReleasesSongItem = props => {
         className={`track-heading-container1 ${changeSelectedSongClassName}`}
         onClick={onClickSong}
       >
-        <p className="editors-picks-paragraph1">{songsList.id + 1}</p>
         <p className="editors-picks-paragraph1">{songsList.track}</p>
 
-        <p className="editors-picks-paragraph1">{songsList.time}</p>
+        <p className="editors-picks-paragraph1">{releaseDate}</p>
 
-        <p className="editors-picks-paragraph1">{songsList.popularity}</p>
+        <p className="editors-picks-paragraph1">{popularity}</p>
       </li>
 
       <li
-        key={songsList.id}
         className={`track-heading-container-sm ${changeSelectedSongClassName}`}
         onClick={onClickSong}
       >
@@ -37,7 +35,7 @@ const OnClickNewReleasesSongItem = props => {
           </p>
         </div>
         <div>
-          <p className="editors-picks-paragraph-p1">{songsList.time}</p>
+          <p className="editors-picks-paragraph-p1">{releaseDate}</p>
         </div>
       </li>
     </div>

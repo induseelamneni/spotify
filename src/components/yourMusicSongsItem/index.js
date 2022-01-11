@@ -1,7 +1,11 @@
 import './index.css'
 
+const moment = require('moment')
+
 const yourMusicSongsItem = props => {
   const {songsList, selectedSong, isSongSelected} = props
+
+  const timeStamp = moment(new Date(songsList.time)).format('HH:MM')
 
   const onClickSong = () => {
     selectedSong(songsList.id)
@@ -29,7 +33,7 @@ const yourMusicSongsItem = props => {
       </div>
 
       <div className="time-container">
-        <p className="time">{songsList.time}</p>
+        <p className="time">{timeStamp}</p>
       </div>
     </li>
   )

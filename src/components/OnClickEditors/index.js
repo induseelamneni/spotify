@@ -1,5 +1,6 @@
 import {Component} from 'react'
 import './index.css'
+import ReactAudioPlayer from 'react-audio-player'
 import {BiArrowBack} from 'react-icons/bi'
 import Loader from 'react-loader-spinner'
 import Cookies from 'js-cookie'
@@ -127,11 +128,12 @@ class OnClickEditors extends Component {
         </div>
         <hr className="line" />
         <ul className="songs-list">
-          {onClickEditor.addedTime.map(eachSong => (
+          {onClickEditor.addedTime.map((eachSong, index) => (
             <OnClickEditorSongItem
               key={eachSong.id}
               selectedSong={this.selectedSong}
               songsList={eachSong}
+              serialNo={index + 1}
               isActive={selectSongId === eachSong.id}
             />
           ))}
@@ -164,15 +166,16 @@ class OnClickEditors extends Component {
               </div>
             </div>
             <div className="audio-container">
-              <audio controls>
-                <source src={songUrl} />
-                <track src="captions_en.vtt" kind="captions" />
-              </audio>
+              <ReactAudioPlayer src={songUrl} autoPlay controls />
             </div>
           </div>
         </div>
       </>
     )
+  }
+
+  onClickRetryJobDetails = () => {
+    this.getPlayListSongsList()
   }
 
   failureView = () => (

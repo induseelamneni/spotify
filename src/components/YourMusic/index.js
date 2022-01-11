@@ -1,5 +1,5 @@
 import './index.css'
-
+import ReactAudioPlayer from 'react-audio-player'
 import {Component} from 'react'
 import Cookies from 'js-cookie'
 import Loader from 'react-loader-spinner'
@@ -19,6 +19,8 @@ class YourMusic extends Component {
     music: [],
     selectedSongName: '',
     selectSongId: '',
+    songUrl: '',
+    imageUrl: '',
   }
 
   componentDidMount() {
@@ -39,15 +41,16 @@ class YourMusic extends Component {
     const response = await fetch(apiUrl, options)
     if (response.ok === true) {
       const fetchedData = await response.json()
+      console.log(fetchedData)
       const musicData = fetchedData
 
       const updatedMusicData = musicData.items.map(each => ({
         time: each.added_at,
         id: each.track.id,
-
+        songUrl: each.track.preview_url,
         imageUrl: each.track.album.images[0].url,
         songName: each.track.name,
-        MovieName: each.track.album.artists[0].name,
+        artistName: each.track.album.artists[0].name,
       }))
 
       this.setState({
@@ -61,8 +64,15 @@ class YourMusic extends Component {
 
   selectedSong = id => {
     const {music} = this.state
+    console.log(music)
+    const filteredSong = music.filter(each => each.id === id)
+    console.log(filteredSong)
+
     this.setState({
-      selectedSongName: music.songName,
+      selectedSongName: filteredSong[0].songName,
+      songUrl: filteredSong[0].songUrl,
+      artistName: filteredSong[0].artistName,
+      imageUrl: filteredSong[0].imageUrl,
       selectSongId: id,
     })
   }
@@ -99,7 +109,14 @@ class YourMusic extends Component {
   )
 
   successView = () => {
-    const {selectedSongName, selectSongId, music} = this.state
+    const {
+      selectedSongName,
+      selectSongId,
+      music,
+      songUrl,
+      artistName,
+      imageUrl,
+    } = this.state
 
     return (
       <>
@@ -114,23 +131,21 @@ class YourMusic extends Component {
             />
           ))}
         </ul>
-        <div className="bottom-container">
-          <div className="img-container">
-            <img
-              src={selectedSongName.imageUrl}
-              alt="song-play"
-              className="play-img"
-            />
-          </div>
-          <div className="bottom-song-name-container">
-            <h1 className="song-name-heading">{selectedSongName.songName}</h1>
-            <p className="music-name">{selectedSongName.MovieName}</p>
-          </div>
+        <div className="bottom-play-container">
+          <div className="bottom-img-song-container">
+            <div className="audio-container1">
+              <img src={imageUrl} alt="song-play" className="play-img" />
+              <div className="e-d-p-c">
+                <h1 className="editors-picks-paragraph-h">
+                  {selectedSongName}
+                </h1>
+                <p className="artist">{artistName}</p>
+              </div>
+            </div>
 
-          <div className="music-play-img">
-            <audio src="Bell.mp3" type="audio/mpeg" className="audio" controls>
-              <track kind="captions" />
-            </audio>
+            <div className="audio-container">
+              <ReactAudioPlayer src={songUrl} autoPlay controls />
+            </div>
           </div>
         </div>
       </>

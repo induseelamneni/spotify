@@ -46,6 +46,7 @@ class PlayList extends Component {
     const response = await fetch(apiUrl, options)
     if (response.ok === true) {
       const fetchedData = await response.json()
+      console.log(fetchedData)
 
       const updatedData = fetchedData.items.map(each => ({
         id: each.id,
@@ -54,6 +55,7 @@ class PlayList extends Component {
         imageUrl: each.images[0].url,
       }))
       console.log(updatedData)
+
       this.setState({
         playList: updatedData,
         fetchingDataStatus: apiStatusConstants.success,
@@ -96,17 +98,20 @@ class PlayList extends Component {
 
   successView = () => {
     const {playList} = this.state
+
     return (
       <>
         <h1 className="play-list-heading">Your Playlists</h1>
         <ul className="music-container">
           {playList.map(eachPlayList => (
-            <li className="playlist-2-container" key={eachPlayList.id}>
-              <img src={eachPlayList.imageUrl} alt="music" className="pic1" />
+            <Link to={`/playList/${eachPlayList.id}`} className="nav-link">
+              <li className="playlist-2-container" key={eachPlayList.id}>
+                <img src={eachPlayList.imageUrl} alt="music" className="pic1" />
 
-              <p className="my-fav-heading">{eachPlayList.name}</p>
-              <p className="track-para-p">{eachPlayList.tracksCount}</p>
-            </li>
+                <p className="my-fav-heading">{eachPlayList.name}</p>
+                <p className="track-para-p">{eachPlayList.tracksCount}</p>
+              </li>
+            </Link>
           ))}
         </ul>
       </>

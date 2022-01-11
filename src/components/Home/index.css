@@ -225,7 +225,6 @@
     font-weight: 500;
   }
   .home-container {
-    padding-left: 10px;
     background-color: transparent;
     width: 120%;
     min-height: 100vh;
@@ -273,6 +272,7 @@
     width: 100px;
   }
   .list-item1 {
+    height: 100px;
     list-style-type: none;
     margin-top: 10px;
     margin-left: 10px;
@@ -282,10 +282,10 @@
   }
 
   .image-style1 {
-    margin-left: 45px;
+    margin-left: 46px;
     margin-bottom: 20px;
     width: 50px;
-    height: 50px;
+    height: 44px;
   }
   .type {
     font-family: Assistant;

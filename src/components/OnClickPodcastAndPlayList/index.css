@@ -23,6 +23,7 @@
 
 .play-list-pic-description {
   margin-left: 10px;
+  text-align: center;
 }
 
 @media screen and (min-width: 768px) {
