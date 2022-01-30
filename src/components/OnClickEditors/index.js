@@ -166,7 +166,12 @@ class OnClickEditors extends Component {
               </div>
             </div>
             <div className="audio-container">
-              <ReactAudioPlayer src={songUrl} autoPlay controls />
+              <ReactAudioPlayer
+                src={songUrl}
+                autoPlay
+                controls
+                className="audio-control"
+              />
             </div>
           </div>
         </div>

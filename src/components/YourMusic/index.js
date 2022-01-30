@@ -144,7 +144,12 @@ class YourMusic extends Component {
             </div>
 
             <div className="audio-container">
-              <ReactAudioPlayer src={songUrl} autoPlay controls />
+              <ReactAudioPlayer
+                src={songUrl}
+                autoPlay
+                controls
+                className="audio-control"
+              />
             </div>
           </div>
         </div>

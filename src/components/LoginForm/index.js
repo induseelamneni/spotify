@@ -89,7 +89,7 @@ class LoginForm extends Component {
 
   openLoginModal = () => {
     // YOU NEED TO ADD YOUR CLIENT ID HERE
-    const clientId = 'c4bad01b30c6489090cb4b3356a74c46'
+    const clientId = '6f63fa7a31c34b5b9949d0653489ac0a'
 
     const redirectUrl = this.getRedirectURL()
 
